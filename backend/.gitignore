@@ -1,0 +1,17 @@
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.db
+*.sqlite3
+.venv/
+.env
+.pytest_cache/
+.mypy_cache/
+.DS_Store
+model_artifacts/*.joblib
+model_artifacts/*.pkl
+data/raw/*
+data/processed/*
+!data/raw/.gitkeep
+!data/processed/.gitkeep
