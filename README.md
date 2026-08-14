@@ -1,19 +1,20 @@
-# 🫀 CardioSense Pro — End-to-End ML Health Risk Platform
+# CardioSense Pro - End-to-End ML Health Risk Platform
 
 [![CI](https://github.com/Aadil-Mansuri0/CardioSense-Pro-Fullstack-ML/actions/workflows/ci.yml/badge.svg)](https://github.com/Aadil-Mansuri0/CardioSense-Pro-Fullstack-ML/actions/workflows/ci.yml)
 
-> A full-stack machine-learning application combining a browser UI, FastAPI backend, JWT authentication, per-user prediction history, and a reproducible model-training pipeline.
+A full-stack machine-learning application combining a browser UI, FastAPI backend, JWT authentication, per-user prediction history, and a reproducible model-training pipeline.
 
-## 🚀 Project Links
+## Project Links
 
-- 💻 **Source:** [GitHub Repository](https://github.com/Aadil-Mansuri0/CardioSense-Pro-Fullstack-ML)
-- 🌐 **Frontend Demo:** [https://aadil-mansuri0.github.io/projects/cardiosense/](https://aadil-mansuri0.github.io/projects/cardiosense/)
-- 📚 **API Docs (local):** `http://127.0.0.1:8000/docs`
-- ❤️ **Health Check (local):** `http://127.0.0.1:8000/api/v1/health`
+- Source: [GitHub Repository](https://github.com/Aadil-Mansuri0/CardioSense-Pro-Fullstack-ML)
+- Frontend Demo: [https://aadil-mansuri0.github.io/projects/cardiosense/](https://aadil-mansuri0.github.io/projects/cardiosense/)
+- API Docs (local): `http://127.0.0.1:8000/docs`
+- Health Check (local): `http://127.0.0.1:8000/api/v1/health`
+- Deployment Checklist: [`docs/deployment_checklist.md`](docs/deployment_checklist.md)
 
-> **Deployment note:** the frontend demo is hosted and verified through the live portfolio GitHub Pages site. The FastAPI backend is Docker-ready and runs locally, but a public backend URL is not claimed until a backend hosting provider is connected and verified.
+Deployment note: the frontend demo is hosted and verified through the live portfolio GitHub Pages site. The FastAPI backend is Docker-ready and runs locally, but a public backend URL is not claimed until a backend hosting provider is connected and verified.
 
-## ✨ What It Demonstrates
+## What It Demonstrates
 
 - Interactive frontend for health-risk prediction
 - FastAPI REST API with automatic OpenAPI/Swagger documentation
@@ -24,9 +25,9 @@
 - Docker-ready backend
 - GitHub Actions CI with automated API tests and route checks
 
-## 🧠 Verified Model Evaluation
+## Verified Model Evaluation
 
-The checked-in model metrics report contains results from **918 rows** with a 20% test split. The evaluated models include Gradient Boosting, Random Forest, SVM (RBF), and Logistic Regression.
+The checked-in model metrics report contains results from 918 rows with a 20% test split. The evaluated models include Gradient Boosting, Random Forest, SVM (RBF), and Logistic Regression.
 
 | Model | Accuracy | Precision | Recall | F1 | ROC-AUC |
 |---|---:|---:|---:|---:|---:|
@@ -35,9 +36,9 @@ The checked-in model metrics report contains results from **918 rows** with a 20
 | Logistic Regression | 88.04% | 87.74% | 91.18% | 89.42% | 89.92% |
 | SVM (RBF) | 86.41% | 85.98% | 90.20% | 88.04% | 92.12% |
 
-**Important:** these are project evaluation results, not clinical validation. They should not be interpreted as medical-grade diagnostic performance.
+Important: these are project evaluation results, not clinical validation. They should not be interpreted as medical-grade diagnostic performance.
 
-## 🏗️ Architecture
+## Architecture
 
 ```mermaid
 flowchart LR
@@ -50,12 +51,14 @@ flowchart LR
     DATA[Kaggle Dataset] --> TRAIN
 ```
 
-## 📁 Project Structure
+## Project Structure
 
 ```text
 .
 ├── CardioSense_Pro_v2.html
 ├── README.md
+├── docs/
+│   └── deployment_checklist.md
 └── backend/
     ├── app/
     │   ├── api/routes/
@@ -75,7 +78,7 @@ flowchart LR
     └── requirements.txt
 ```
 
-## ⚡ Run Locally
+## Run Locally
 
 ### 1. Start the backend
 
@@ -113,14 +116,14 @@ python3 -m http.server 5500
 
 Then open `http://127.0.0.1:5500/CardioSense_Pro_v2.html`.
 
-## 🐳 Docker
+## Docker
 
 ```bash
 cp backend/.env.example backend/.env
 docker compose up --build
 ```
 
-## 🔐 Environment Variables
+## Environment Variables
 
 Use `backend/.env.example` as the template. Never commit real secrets.
 
@@ -131,7 +134,7 @@ Important settings include:
 - `MODEL_ARTIFACT_PATH`
 - `CORS_ORIGINS`
 
-## 🔌 API Surface
+## API Surface
 
 Base path: `/api/v1`
 
@@ -144,7 +147,7 @@ Base path: `/api/v1`
 
 FastAPI exposes interactive API documentation at `/docs` when the backend is running.
 
-## 🧪 Quality & CI
+## Quality & CI
 
 Every push and pull request to `main` runs backend validation that:
 
@@ -155,11 +158,11 @@ Every push and pull request to `main` runs backend validation that:
 
 Workflow: [`.github/workflows/ci.yml`](.github/workflows/ci.yml)
 
-## ⚠️ Educational / Medical Disclaimer
+## Educational / Medical Disclaimer
 
-CardioSense Pro is an **educational software and machine-learning project**. It is not a medical device and must not be used for diagnosis, treatment, or clinical decision-making. Predictions are model outputs and should not replace professional medical advice.
+CardioSense Pro is an educational software and machine-learning project. It is not a medical device and must not be used for diagnosis, treatment, or clinical decision-making. Predictions are model outputs and should not replace professional medical advice.
 
-## 🔮 Engineering Roadmap
+## Engineering Roadmap
 
 - PostgreSQL deployment for production persistence
 - Alembic database migrations
@@ -167,8 +170,8 @@ CardioSense Pro is an **educational software and machine-learning project**. It 
 - Model versioning and reproducible training artifacts
 - Observability and structured application logging
 
-## 👨‍💻 Author
+## Author
 
-**Aadil Mansuri** — CSE (AI) student building ML, data-engineering and backend systems.
+Aadil Mansuri - CSE (AI) student building ML, data-engineering and backend systems.
 
 [GitHub](https://github.com/Aadil-Mansuri0)
