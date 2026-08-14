@@ -1,70 +1,81 @@
-# CardioSense Pro - End-to-End Heart Disease ML Platform
+# 🫀 CardioSense Pro — End-to-End ML Health Risk Platform
 
-End-to-end heart disease prediction platform with interactive frontend, FastAPI backend, JWT-based multi-user authentication, per-user prediction history, and a Kaggle-trained ML pipeline.
+[![CI](https://github.com/Aadil-Mansuri0/CardioSense-Pro-Fullstack-ML/actions/workflows/ci.yml/badge.svg)](https://github.com/Aadil-Mansuri0/CardioSense-Pro-Fullstack-ML/actions/workflows/ci.yml)
 
-CardioSense Pro is now structured as a complete project with:
-- Existing modern frontend UI (`CardioSense_Pro_v2.html`)
-- Production-style backend API (FastAPI)
-- JWT authentication for multi-user access
-- Per-user prediction history persisted in database
-- ML training pipeline using Kaggle heart disease datasets
-- Model artifact loading with backend inference
+> A full-stack machine-learning application combining a browser UI, FastAPI backend, JWT authentication, per-user prediction history, and a reproducible model-training pipeline.
 
-## Project Structure
+## 🚀 Project Links
+
+- 💻 **Source:** [GitHub Repository](https://github.com/Aadil-Mansuri0/CardioSense-Pro-Fullstack-ML)
+- 📚 **API Docs (local):** `http://127.0.0.1:8000/docs`
+- ❤️ **Health Check (local):** `http://127.0.0.1:8000/api/v1/health`
+
+> **Live deployment:** a public live demo is not claimed until the frontend and backend are deployed and verified end-to-end. The repository is deployment-ready, but this README intentionally avoids publishing an unverified URL.
+
+## ✨ What It Demonstrates
+
+- Interactive frontend for health-risk prediction
+- FastAPI REST API with automatic OpenAPI/Swagger documentation
+- JWT-based authentication and protected prediction history
+- SQLAlchemy persistence with SQLite for local development
+- ML training and artifact loading with scikit-learn/joblib
+- Model metadata and reproducible evaluation results
+- Docker-ready backend
+- GitHub Actions CI for Python compilation and API smoke checks
+
+## 🧠 Verified Model Evaluation
+
+The checked-in model metrics report contains results from **918 rows** with a 20% test split. The evaluated models include Gradient Boosting, Random Forest, SVM (RBF), and Logistic Regression.
+
+| Model | Accuracy | Precision | Recall | F1 | ROC-AUC |
+|---|---:|---:|---:|---:|---:|
+| Random Forest | 91.30% | 90.57% | 94.12% | 92.31% | 93.44% |
+| Gradient Boosting | 89.13% | 90.20% | 90.20% | 90.20% | 93.61% |
+| Logistic Regression | 88.04% | 87.74% | 91.18% | 89.42% | 89.92% |
+| SVM (RBF) | 86.41% | 85.98% | 90.20% | 88.04% | 92.12% |
+
+**Important:** these are project evaluation results, not clinical validation. They should not be interpreted as medical-grade diagnostic performance.
+
+## 🏗️ Architecture
+
+```mermaid
+flowchart LR
+    UI[Browser Frontend] --> API[FastAPI REST API]
+    API --> AUTH[JWT Authentication]
+    API --> DB[(SQLite / SQLAlchemy)]
+    API --> MODEL[Model Service]
+    MODEL --> ART[Joblib Model Artifact]
+    TRAIN[Training Pipeline] --> ART
+    DATA[Kaggle Dataset] --> TRAIN
+```
+
+## 📁 Project Structure
 
 ```text
 .
 ├── CardioSense_Pro_v2.html
 ├── README.md
-└── backend
-    ├── app
-    │   ├── api
-    │   │   ├── deps.py
-    │   │   └── routes
-    │   │       ├── auth.py
-    │   │       ├── health.py
-    │   │       └── predictions.py
-    │   ├── core
-    │   │   ├── config.py
-    │   │   └── security.py
-    │   ├── db
-    │   │   ├── base.py
-    │   │   └── session.py
-    │   ├── models
-    │   │   ├── prediction.py
-    │   │   └── user.py
-    │   ├── schemas
-    │   │   ├── auth.py
-    │   │   └── prediction.py
-    │   ├── services
-    │   │   ├── feature_schema.py
-    │   │   └── model_service.py
+└── backend/
+    ├── app/
+    │   ├── api/routes/
+    │   ├── core/
+    │   ├── db/
+    │   ├── models/
+    │   ├── schemas/
+    │   ├── services/
     │   └── main.py
-    ├── ml
-    │   ├── constants.py
-    │   ├── dataset_utils.py
-    │   ├── download_kaggle_data.py
-    │   └── train.py
-    ├── data
-    │   ├── raw
-    │   └── processed
-    ├── model_artifacts
+    ├── ml/
+    ├── data/
+    ├── model_artifacts/
     ├── .env.example
     ├── Dockerfile
+    ├── Makefile
     └── requirements.txt
 ```
 
-## Fast Setup (Local)
+## ⚡ Run Locally
 
-1. Open terminal in `backend` folder
-2. Create virtual environment and install dependencies
-3. Configure `.env`
-4. Download dataset(s) from Kaggle
-5. Train model
-6. Run backend API
-7. Open frontend HTML file
-
-### Commands
+### 1. Start the backend
 
 ```bash
 cd backend
@@ -72,74 +83,90 @@ python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 cp .env.example .env
-python -m ml.download_kaggle_data --dataset-slug fedesoriano/heart-failure-prediction
-python -m ml.train
 uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
 ```
 
-Or use shortcuts:
+Open:
+
+- API: http://127.0.0.1:8000
+- Swagger UI: http://127.0.0.1:8000/docs
+- ReDoc: http://127.0.0.1:8000/redoc
+
+### 2. Train the model (optional for development)
 
 ```bash
-cd backend
-make install
-make download
-make train
-make run
+python -m ml.download_kaggle_data --dataset-slug fedesoriano/heart-failure-prediction
+python -m ml.train
 ```
 
-Then open `CardioSense_Pro_v2.html` in browser.
+The repository also contains a model artifact/metrics report so the application can be inspected without presenting a fabricated benchmark.
 
-If browser blocks local file behavior on your setup, serve project root with a static server and open the HTML via localhost.
+### 3. Open the frontend
 
-## Docker Run
+Serve the repository root with a local static server rather than relying on a `file://` URL:
+
+```bash
+python3 -m http.server 5500
+```
+
+Then open `http://127.0.0.1:5500/CardioSense_Pro_v2.html`.
+
+## 🐳 Docker
 
 ```bash
 cp backend/.env.example backend/.env
 docker compose up --build
 ```
 
-## Multi-User Flow
+## 🔐 Environment Variables
 
-Frontend top bar now includes:
-- Register
-- Login
-- Logout
-- History
+Use `backend/.env.example` as the template. Never commit real secrets.
 
-Behavior:
-- Logged-in users: prediction calls backend `/api/v1/predictions` and saves history per user.
-- Logged-out users: app uses local fallback model (same UX, no persistence).
+Important settings include:
 
-## API Endpoints
+- `SECRET_KEY`
+- `DATABASE_URL`
+- `MODEL_ARTIFACT_PATH`
+- `CORS_ORIGINS`
 
-Base: `http://127.0.0.1:8000/api/v1`
+## 🔌 API Surface
+
+Base path: `/api/v1`
 
 - `POST /auth/register`
 - `POST /auth/login`
 - `GET /auth/me`
 - `GET /health`
-- `POST /predictions` (auth required)
-- `GET /predictions/history` (auth required)
+- `POST /predictions` (authenticated)
+- `GET /predictions/history` (authenticated)
 
-## Kaggle + Large Data Strategy
+FastAPI exposes interactive API documentation at `/docs` when the backend is running.
 
-`ml.train` supports combining multiple CSVs automatically:
-- Put one or more Kaggle heart-disease CSV files inside `backend/data/raw`
-- Training script normalizes schema and merges compatible datasets
-- This allows scaling beyond a single small dataset
+## 🧪 Quality & CI
 
-You can run multiple downloads with different slugs and then retrain.
+Every push and pull request to `main` runs a lightweight backend validation workflow that:
 
-## Notes
+1. Installs the pinned backend dependencies.
+2. Compiles the Python application and ML modules.
+3. Imports the FastAPI app and verifies required routes.
 
-- Default DB: SQLite (`backend/cardiosense.db`)
-- JWT auth enabled via `SECRET_KEY`
-- If model artifact is missing, backend falls back to safe heuristic mode until training completes
-- CORS configured for local frontend/backend development
+Workflow: [`.github/workflows/ci.yml`](.github/workflows/ci.yml)
 
-## Deployment Direction (Next Step)
+## ⚠️ Educational / Medical Disclaimer
 
-- Move SQLite to PostgreSQL
-- Add Alembic migrations
-- Add Redis + background retraining jobs
-- Host frontend as static app and backend as containerized API
+CardioSense Pro is an **educational software and machine-learning project**. It is not a medical device and must not be used for diagnosis, treatment, or clinical decision-making. Predictions are model outputs and should not replace professional medical advice.
+
+## 🔮 Engineering Roadmap
+
+- PostgreSQL deployment for production persistence
+- Alembic database migrations
+- Automated API test suite
+- Containerized frontend + backend deployment
+- Model versioning and reproducible training artifacts
+- Observability and structured application logging
+
+## 👨‍💻 Author
+
+**Aadil Mansuri** — CSE (AI) student building ML, data-engineering and backend systems.
+
+[GitHub](https://github.com/Aadil-Mansuri0)
