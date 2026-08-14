@@ -7,10 +7,11 @@
 ## 🚀 Project Links
 
 - 💻 **Source:** [GitHub Repository](https://github.com/Aadil-Mansuri0/CardioSense-Pro-Fullstack-ML)
+- 🌐 **Frontend Demo:** [https://aadil-mansuri0.github.io/projects/cardiosense/](https://aadil-mansuri0.github.io/projects/cardiosense/)
 - 📚 **API Docs (local):** `http://127.0.0.1:8000/docs`
 - ❤️ **Health Check (local):** `http://127.0.0.1:8000/api/v1/health`
 
-> **Live deployment:** a public live demo is not claimed until the frontend and backend are deployed and verified end-to-end. The repository is deployment-ready, but this README intentionally avoids publishing an unverified URL.
+> **Deployment note:** the frontend demo is hosted and verified through the live portfolio GitHub Pages site. The FastAPI backend is Docker-ready and runs locally, but a public backend URL is not claimed until a backend hosting provider is connected and verified.
 
 ## ✨ What It Demonstrates
 
