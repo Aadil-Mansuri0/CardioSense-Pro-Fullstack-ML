@@ -28,9 +28,12 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Compile Python modules
-        run: python -m compileall -q app ml
+        run: python -m compileall -q app ml tests
 
-      - name: API smoke test
+      - name: Run API tests
+        run: pytest -q
+
+      - name: API route smoke check
         run: |
           python - <<'PY'
           from app.main import app
@@ -39,5 +42,5 @@ jobs:
           missing = required - routes
           if missing:
               raise SystemExit(f"Missing required routes: {sorted(missing)}")
-          print("CardioSense API smoke test passed")
+          print("CardioSense API route smoke check passed")
           PY
