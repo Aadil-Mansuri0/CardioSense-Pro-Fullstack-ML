@@ -10,3 +10,13 @@ services:
     volumes:
       - ./backend/model_artifacts:/app/model_artifacts
       - ./backend/cardiosense.db:/app/cardiosense.db
+
+  cardiosense-frontend:
+    image: nginx:1.27-alpine
+    container_name: cardiosense-frontend
+    ports:
+      - "5500:80"
+    volumes:
+      - ./CardioSense_Pro_v2.html:/usr/share/nginx/html/index.html:ro
+    depends_on:
+      - cardiosense-api
