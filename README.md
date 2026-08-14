@@ -21,7 +21,7 @@
 - ML training and artifact loading with scikit-learn/joblib
 - Model metadata and reproducible evaluation results
 - Docker-ready backend
-- GitHub Actions CI for Python compilation and API smoke checks
+- GitHub Actions CI with automated API tests and route checks
 
 ## 🧠 Verified Model Evaluation
 
@@ -67,6 +67,7 @@ flowchart LR
     ├── ml/
     ├── data/
     ├── model_artifacts/
+    ├── tests/
     ├── .env.example
     ├── Dockerfile
     ├── Makefile
@@ -144,11 +145,12 @@ FastAPI exposes interactive API documentation at `/docs` when the backend is run
 
 ## 🧪 Quality & CI
 
-Every push and pull request to `main` runs a lightweight backend validation workflow that:
+Every push and pull request to `main` runs backend validation that:
 
-1. Installs the pinned backend dependencies.
-2. Compiles the Python application and ML modules.
-3. Imports the FastAPI app and verifies required routes.
+1. Installs pinned dependencies.
+2. Compiles application, ML and test modules.
+3. Runs the automated API tests.
+4. Verifies required API routes.
 
 Workflow: [`.github/workflows/ci.yml`](.github/workflows/ci.yml)
 
@@ -160,7 +162,6 @@ CardioSense Pro is an **educational software and machine-learning project**. It 
 
 - PostgreSQL deployment for production persistence
 - Alembic database migrations
-- Automated API test suite
 - Containerized frontend + backend deployment
 - Model versioning and reproducible training artifacts
 - Observability and structured application logging
