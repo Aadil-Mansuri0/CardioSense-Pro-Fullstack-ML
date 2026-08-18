@@ -1,15 +1,16 @@
 # CardioSense Pro - End-to-End ML Health Risk Platform
 
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Website%20Active-brightgreen?style=for-the-badge&logo=githubpages&logoColor=white)](https://aadil-mansuri0.github.io/CardioSense-Pro-Fullstack-ML/)
 [![CI](https://github.com/Aadil-Mansuri0/CardioSense-Pro-Fullstack-ML/actions/workflows/ci.yml/badge.svg)](https://github.com/Aadil-Mansuri0/CardioSense-Pro-Fullstack-ML/actions/workflows/ci.yml)
 
 A full-stack machine-learning application combining a browser UI, FastAPI backend, JWT authentication, per-user prediction history, and a reproducible model-training pipeline.
 
-## Project Links
+## 🌐 Project Links
 
-- Source: [GitHub Repository](https://github.com/Aadil-Mansuri0/CardioSense-Pro-Fullstack-ML)
-- Frontend Demo: [https://aadil-mansuri0.github.io/projects/cardiosense/](https://aadil-mansuri0.github.io/projects/cardiosense/)
-- API Docs (local): `http://127.0.0.1:8000/docs`
-- Health Check (local): `http://127.0.0.1:8000/api/v1/health`
+- **Live Interactive Demo**: **[https://aadil-mansuri0.github.io/CardioSense-Pro-Fullstack-ML/](https://aadil-mansuri0.github.io/CardioSense-Pro-Fullstack-ML/)**
+- **Source Code**: [GitHub Repository](https://github.com/Aadil-Mansuri0/CardioSense-Pro-Fullstack-ML)
+- **API Docs (local)**: `http://127.0.0.1:8000/docs`
+- **Health Check (local)**: `http://127.0.0.1:8000/api/v1/health`
 - Deployment Checklist: [`docs/deployment_checklist.md`](docs/deployment_checklist.md)
 
 Deployment note: the frontend demo is hosted and verified through the live portfolio GitHub Pages site. The FastAPI backend is Docker-ready and runs locally, but a public backend URL is not claimed until a backend hosting provider is connected and verified.
